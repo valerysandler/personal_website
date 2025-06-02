@@ -1,0 +1,60 @@
+---
+const projects = [
+  {
+    title: 'Accounting Management System – IDF',
+    description:
+      'An internal system developed to replace Excel-based workflows for accountants. Includes data validation, user roles, and performance reporting. Built with React, NestJS, PostgreSQL.',
+    image:
+      'https://images.unsplash.com/photo-1581093588401-9c80b7280f47?auto=format&fit=crop&w=870&q=80',
+  },
+  {
+    title: 'Streaming Integration Platform – FeelThere',
+    description:
+      'Web application for live streaming to Facebook and YouTube with authentication and channel management. Implemented OAuth, streaming APIs, and real-time analytics.',
+    image:
+      'https://images.unsplash.com/photo-1605902711622-cfb43c4437d3?auto=format&fit=crop&w=870&q=80',
+  },
+  {
+    title: 'CRM Admin Panel',
+    description:
+      'Built a customizable admin dashboard with user roles, analytics, and live updates. Stack: React, TypeScript, WebSockets, MongoDB.',
+    image:
+      'https://images.unsplash.com/photo-1581276879432-15a57c9bdfd1?auto=format&fit=crop&w=870&q=80',
+  },
+];
+---
+
+<div class="relative w-full max-w-6xl mx-auto py-12 px-4">
+  <h2 class="text-3xl font-bold mb-8 text-center">Highlighted Projects</h2>
+
+  <div x-data="{ current: 0 }" x-init="setInterval(() => current = (current + 1) % {{ projects.length }}, 6000)">
+    <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="w-full lg:w-1/2">
+        <template x-for="(project, index) in {{ JSON.stringify(projects) }}" :key="index">
+          <div x-show="current === index" x-transition>
+            <img :src="project.image" class="rounded-xl shadow-lg" alt="Project preview" />
+          </div>
+        </template>
+      </div>
+
+      <div class="w-full lg:w-1/2">
+        <template x-for="(project, index) in {{ JSON.stringify(projects) }}" :key="index">
+          <div x-show="current === index" x-transition>
+            <h3 class="text-2xl font-semibold mb-2" x-text="project.title"></h3>
+            <p class="text-gray-600 dark:text-gray-300" x-text="project.description"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-3 mt-6">
+      <template x-for="(project, index) in {{ JSON.stringify(projects) }}" :key="index">
+        <button
+          class="w-3 h-3 rounded-full"
+          :class="current === index ? 'bg-blue-600' : 'bg-gray-400'"
+          @click="current = index"
+        ></button>
+      </template>
+    </div>
+  </div>
+</div>

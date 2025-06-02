@@ -1,0 +1,231 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ProjectCardGrid from '~/components/widgets/ProjectCardGrid.astro';
+
+import myPhoto from '~/assets/images/IMG_6262.jpg';
+import projectScreen from '~/assets/images/projects/feelthere/2.jpeg';
+import resume from '~/assets/resume.pdf';
+
+const metadata = {
+  title: 'Valery Sandler | Full Stack Developer',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      links={[
+        { text: 'Home', href: '#' },
+        { text: 'About', href: '#about' },
+        { text: 'Resume', href: '#resume' },
+        { text: 'Projects', href: '#projects' },
+        { text: 'GitHub', href: 'https://github.com/valerysandler' },
+      ]}
+      actions={[
+        { text: 'Hire Me', href: 'mailto:valerysandler@gmail.com' },
+        {
+          text: 'Download Resume',
+          href: resume,
+          download: 'Valery_Sandler_Resume.pdf',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          name: 'resume',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero Section -->
+  <Hero
+    id="hero"
+    title="Valery Sandler"
+    tagline="Full Stack Developer & Technical Problem Solver"
+    actions={[{ variant: 'primary', text: 'Contact Me', href: 'mailto:valerysandler@gmail.com' }]}
+  >
+    <Fragment slot="subtitle">
+      I build clean, scalable, and efficient solutions for modern web and mobile platforms — with a strong focus on
+      performance, UX, and long-term maintainability.<br />
+      From military-grade internal systems to user-facing commercial apps — I’ve done it, and I keep doing it better.
+    </Fragment>
+  </Hero>
+
+  <!-- About Section -->
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: 'https://www.linkedin.com/in/valerysandler/',
+        },
+      },
+      {
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'Github',
+          href: 'https://www.github.com/valerysandler',
+        },
+      },
+      // WhatsApp is not included as it is not a professional platform
+      {
+        icon: 'tabler:brand-whatsapp',
+        callToAction: {
+          target: '_blank',
+          text: 'WhatsApp',
+          href: 'https://wa.me/972546167500',
+        },
+      },
+    ]}
+    image={{
+      src: myPhoto,
+      alt: 'Colorful Image',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About Me</h2>
+      <p>
+        I’m a full stack developer with a passion for building real-world digital products — fast, secure, and scalable.
+        Whether it’s streamlining internal workflows or enhancing customer-facing platforms, I focus on solutions that
+        make a measurable impact.
+      </p>
+      <br />
+      <p>
+        My toolkit spans from modern frontend frameworks like React and Tailwind to robust backend architectures with
+        Node.js, PostgreSQL, and cloud platforms like AWS. I’m equally comfortable designing clean UI as I am modeling
+        efficient APIs and data flows.
+      </p>
+      <br />
+      <p>
+        Beyond the code, I value thoughtful UX, agile teamwork, and long-term maintainability. I enjoy transforming
+        ideas into structured, production-ready solutions — and constantly learning along the way.
+      </p>
+      <br />
+      <p>If you'd like to connect or collaborate, feel free to reach out or explore the links below:</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Skills Section -->
+  <Features3
+    title="Skills"
+    subtitle="Technologies I use"
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Frontend',
+        description:
+          'Experienced with React.js, Next.js, and TypeScript to build responsive, accessible UIs. Strong grasp of HTML5, CSS3, TailwindCSS, and modern component libraries for scalable design systems.',
+      },
+      {
+        title: 'Backend',
+        description:
+          'Hands-on with Node.js (Express, NestJS) for API development, including REST and GraphQL architectures. Skilled in designing scalable services and secure backend logic.',
+      },
+      {
+        title: 'DevOps & Cloud',
+        description:
+          'Deploy and maintain containerized apps with Docker and Kubernetes. Experience with CI/CD pipelines and cloud platforms like AWS (EC2, S3) and GCP.',
+      },
+      {
+        title: 'Databases',
+        description:
+          'Proficient in both SQL and NoSQL systems including PostgreSQL, MySQL, MongoDB, and Redis. Skilled in schema design, optimization, and migrations.',
+      },
+      {
+        title: 'Other Tools & Practices',
+        description:
+          'Version control with Git, real-time systems using WebSockets, message queues (RabbitMQ), and Agile/Scrum workflows for collaborative delivery.',
+      },
+    ]}
+  />
+
+  <!-- Resume Widget ****************** -->
+  <Steps
+    id="resume"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Full Stack Developer <br /> <span class="font-normal">Dagesh F.K</span> <br /> <span class="text-sm font-normal">Jan 2022 – Present</span>',
+        description: `
+      Led development of internal web tools using React, Node.js, and PostgreSQL to support core business operations. <br />
+      Delivered performant RESTful APIs and integrated complex third-party services. <br />
+      Focused on performance tuning, secure architecture, and clean code practices across the stack.
+    `,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Full Stack Developer <br /> <span class="font-normal">Israel Defense Forces</span> <br /> <span class="text-sm font-normal">Feb 2024 – Present</span>',
+        description: `
+      Replaced legacy Excel-based workflows with a custom internal system, increasing efficiency and traceability. <br />
+      Implemented secure data models and scalable backend logic with modular frontend components. <br />
+      Improved UI/UX for better usability across teams and enhanced system maintainability.
+    `,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Full Stack Developer <br /> <span class="font-normal">FeelThere</span> <br /> <span class="text-sm font-normal">Oct 2022 – Feb 2024</span>',
+        description: `
+      Restructured backend codebase for scalability and maintainability, reducing tech debt and onboarding time. <br />
+      Integrated OAuth 2.0 (Google, Facebook) with JWT and enabled real-time video streaming with external APIs. <br />
+      Migrated project to TypeScript and designed new database schemas to support product growth.
+    `,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl ' }}
+  />
+
+  <!-- Projects Section -->
+  <!-- <section id="projects" class="py-16">
+    <div class="container mx-auto max-w-6xl">
+      <h2 class="text-3xl font-bold mb-4">Projects</h2>
+      <p class="text-gray-600 mb-8">Selected work from past experiences</p>
+      <ProjectCardGrid
+        projects={[
+          {
+            title: 'Israel Defense Forces',
+            description: `Internal financial tool developed for the IDF to digitize and secure accounting workflows. I designed and implemented a modular frontend and robust data model that replaced Excel-based operations, improving reliability and efficiency for non-tech users.`,
+            // image: '/images/projects/idf/1.jpeg',
+            link: '',
+          },
+          {
+            title: 'FeelThere',
+            description: `A platform for managing and broadcasting live training sessions for air traffic control simulation. I led the backend refactor, integrated OAuth (Google, Facebook), added video streaming via social APIs, and migrated the full stack to TypeScript for better maintainability.`,
+            image: [projectScreen.src],
+            
+            link: '',
+          },
+        ]}
+      />
+    </div>
+  </section> -->
+
+  <!-- Call To Action -->
+  <CallToAction
+    title="Let's work together"
+    subtitle="Available for freelance or full-time opportunities."
+    actions={[{ variant: 'primary', text: 'Contact Me', href: 'mailto:valerysandler@gmail.com' }]}
+  />
+</Layout>
